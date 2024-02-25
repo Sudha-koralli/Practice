@@ -1,0 +1,30 @@
+<form (ngSubmit)="onsubmit()">
+  <div class="container">
+      <div class="form-row" *ngFor="let obj of dataarray; let i=index">
+          
+          <div class="form-group col-md-4">
+              <label>Name</label>
+              <input type="text" class="form-control" name="name{{i}}" [(ngModel)]="obj.name">
+       
+          </div>
+          <div class="form-group col-md-4">
+              <label>Salary</label>
+              <input type="text" class="form-control" name="salary{{i}}" [(ngModel)]="obj.salary">
+      
+          </div>
+          <div class="form-group col-md-2">
+              <label>Age</label>
+              <input type="text" class="form-control" name="age{{i}}" [(ngModel)]="obj.age">
+              
+            </div>
+            <div class="form-group col-md-2" *ngIf="i!=0">
+                <span (click)="removeForm(i)" class="btn btn-danger">-</span> 
+                
+              </div>
+             
+        </div>
+        <span (click)="addForm()" class="btn btn-success">+</span>   
+        <button class="btn btn-primary">Submit</button>
+  </div>
+    
+    </form>

@@ -1,0 +1,83 @@
+<div class="container1">
+    <div class="form">
+      <div class="col-md-6 offset-md-3">
+        <form [formGroup]="loginForm" class="forms" (ngSubmit)="login()">
+          <h4 class="text-primary">Login </h4>
+
+          <div class="form-group">
+                <mat-form-field class="form-label" subscriptSizing="dynamic">
+                  <mat-label>Email </mat-label>
+                  <input
+                    matNativeControl
+                    formControlName="email"
+                    [ngClass]="{
+                      'is-invalid': submitted && loginForm.controls['email'].errors
+                    }"
+                    type="text"
+                    class="form-control"
+                    matInput
+                    placeholder="enter valid mail"/>
+
+                  <div
+                    *ngIf="submitted && loginForm.controls['email'].errors"
+                    class="text-danger"
+                  >
+                    <div
+                      *ngIf="
+                        submitted && loginForm.controls['email'].errors['required']
+                      "
+                    >
+                      Email is required
+                    </div>
+                    <div
+                      *ngIf="submitted && loginForm.controls['email'].errors['email']"
+                    >
+                      Email is not valid
+                    </div>
+                  </div>
+                 </mat-form-field>
+              <br>
+
+                <mat-form-field class="form-label" subscriptSizing="dynamic">
+                  <mat-label>Password</mat-label>
+                  <input
+                    matNativeControl
+                    formControlName="password"
+                    [ngClass]="{
+                      'is-invalid': submitted && loginForm.controls['password'].errors
+                    }"
+                    type="text"
+                    class="form-control"
+                    matInput type="password" />
+                  <div
+                    *ngIf="submitted && loginForm.controls['password'].errors"
+                    class="text-danger"
+                  >
+                    <div
+                      *ngIf="
+                        submitted && loginForm.controls['password'].errors['required']
+                      "
+                    >
+                      Password is required
+                    </div>
+                  </div>
+                </mat-form-field>
+            <br>
+              
+          
+            <button mat-raised-button color="primary" type="login">Signin</button
+            >&nbsp;
+            <button
+              mat-raised-button
+              style="color: white; background-color: gray"
+              type="reset"
+              (click)="resetForm()"
+            >
+              Reset
+            </button>
+          </div>
+        </form>
+ </div>
+</div>
+</div> 
+ 

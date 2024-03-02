@@ -1,0 +1,44 @@
+.container1{
+    width: 100%;
+    display: flex;
+}
+.form{ 
+    width: 50%;
+    border-collapse: collapse;
+    margin-right: 4%;
+    margin-top: 2%;
+    font-size: small; 
+}
+.mdc-fab--mini {
+    width: 30px;
+    height: 30px;    
+}
+.logOut{
+    margin-top: 1%;
+    margin-left:1%;
+}
+
+.table{
+    width: 70%;
+    margin-left: 20%;
+    max-height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.filter{
+    width: 99%;
+    height: 20%;
+}
+th,td{
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+tr:nth-child(even){
+    background-color: hsl(0, 24%, 90%);
+}
+tr:nth-child(odd){
+    background-color:white;
+}
+
+@import '~@angular/material/prebuilt-themes/indigo-pink.css'

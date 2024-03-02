@@ -1,0 +1,193 @@
+<div class="container1" >
+    <div class="form">
+      <div class="col-md-6 offset-md-3">
+        <form [formGroup]="regForm" class="forms" (ngSubmit)="submit()">
+          <h4 class="text-primary">Registration Form</h4>
+  
+          <div class="form-group">
+            <mat-label>* denoted fields are mandatory</mat-label>
+            <br/><br />
+            <mat-form-field subscriptSizing="dynamic">
+              <mat-label>FirstName</mat-label>
+            <input 
+              type="text"
+              formControlName="firstName"
+              [ngClass]="{
+                'is-invalid': submitted && regForm.controls['firstName'].errors
+              }"
+              type="text"
+              class="form-control"
+              matInput placeholder="enter your first name"
+            />
+            <div
+              *ngIf="submitted && regForm.controls['firstName'].errors"
+              class="text-danger"
+            >
+              <div
+                *ngIf="
+                  submitted && regForm.controls['firstName'].errors['required']
+                "
+              >
+                first name is required
+              </div>
+            </div>
+            </mat-form-field>
+          </div>
+          <br />
+  
+          <div>
+            <mat-form-field subscriptSizing="dynamic">  
+            <mat-label>LastName</mat-label>
+            <input matNativeControl
+              formControlName="lastName"
+              [ngClass]="{
+                'is-invalid': submitted && regForm.controls['lastName'].errors
+              }"
+              type="text"
+              class="form-control"
+              matInput placeholder="enter your last name"
+            />
+            <div
+              *ngIf="submitted && regForm.controls['lastName'].errors"
+              class="text-danger"
+            >
+              <div
+                *ngIf="
+                  submitted && regForm.controls['lastName'].errors['required']
+                "
+              >
+                Last name is required
+              </div>
+            </div>
+            </mat-form-field>
+          </div>
+          <br />
+  
+          <div>
+            <mat-form-field subscriptSizing="dynamic">
+              <mat-label>Email</mat-label>
+            <input matNativeControl
+              formControlName="email"
+              [ngClass]="{
+                'is-invalid': submitted && regForm.controls['email'].errors
+              }"
+              type="text"
+              class="form-control"
+              matInput placeholder="enter valid mail"
+            />
+            <div
+              *ngIf="submitted && regForm.controls['email'].errors"
+              class="text-danger"
+            >
+              <div
+                *ngIf="submitted && regForm.controls['email'].errors['required']"
+              >
+                Email is required
+              </div>
+              <div *ngIf="submitted && regForm.controls['email'].errors['email']">
+                Email is not valid
+              </div>
+            </div>
+          </mat-form-field>
+          </div>
+          <br/>
+  
+          <div>
+            <mat-form-field subscriptSizing="dynamic">
+              <mat-label>Location</mat-label>
+            <input matNativeControl
+              formControlName="location"
+              [ngClass]="{
+                'is-invalid': submitted && regForm.controls['location'].errors
+              }"
+              type="text"
+              class="form-control"
+              matInput placeholder="location"
+            />
+            <div
+              *ngIf="submitted && regForm.controls['location'].errors"
+              class="text-danger"
+            >
+              <div
+                *ngIf="
+                  submitted && regForm.controls['location'].errors['required']
+                "
+              >
+                Location is required
+              </div>
+            </div>
+          </mat-form-field>
+          </div>
+          <br />
+  
+          <div class="form-group">
+            <button mat-raised-button color="primary" type="submit">Submit</button>&nbsp;
+            <button mat-raised-button style=" color:white ; background-color: gray;" type="reset" (click)="reset()">
+              Reset
+            </button>
+          </div>
+        </form>
+        <div>
+          <a href="#" (click)="clearposts($event)">clearposts</a>
+        </div>
+    </div>
+   </div>
+  
+  
+  <div class="table">
+    <mat-form-field class="filter">
+      <mat-label>Search</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Search a details:" #input>
+    </mat-form-field>
+  
+    <table mat-table [dataSource]="posts" matSort>
+      <ng-container matColumnDef="firstName" >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> First Name </th>
+        <td mat-cell *matCellDef="let post of posts"> {{ post.firstName }} </td>
+        <td mat-footer-cell *matFooterCellDef>Number of FirstName</td>
+      </ng-container>
+    
+      <ng-container matColumnDef="lastName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </th>
+        <td mat-cell *matCellDef="let post of posts"> {{ post.lastName }} </td>
+        <td mat-footer-cell *matFooterCellDef>Number of LastName</td>
+      </ng-container>
+    
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+        <td mat-cell *matCellDef="let post of posts"> {{ post.email }} </td>
+        <td mat-footer-cell *matFooterCellDef>Number of Email</td>
+      </ng-container>
+    
+      <ng-container matColumnDef="location">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Location </th>
+        <td mat-cell *matCellDef="let post of posts"> {{ post.location }} </td>
+        <td mat-footer-cell *matFooterCellDef>Number of Location</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="Edit">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Edit </th>
+        <td mat-cell *matCellDef="let post of posts"> <button mat-mini-fab color="primary" type="button" (click)="Update(post)">
+          <mat-icon>edit</mat-icon>
+        </button>&nbsp; </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="Delete">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header > Delete </th>
+        <td mat-cell *matCellDef="let post of posts">   <button mat-mini-fab color="warn" (click)="deleteDetails(post)">
+          <mat-icon>delete</mat-icon>
+        </button></td>
+      
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>
+     </table>
+      <mat-paginator [length]="posts.length" [pageSizeOptions]="[5, 10, 20]"[pageSize]="5" showFirstLastButtons
+      aria-label="Select page">></mat-paginator>
+    </div>  
+  </div>

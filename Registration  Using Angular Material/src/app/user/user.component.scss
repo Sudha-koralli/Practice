@@ -1,0 +1,33 @@
+.container1{
+    width: 100%;
+    display: flex;
+}
+.form{ 
+    width: 50%;
+    border-collapse: collapse;
+    margin-right: 4%;
+    margin-top: 2%;
+    font-size: small; 
+}
+.table{
+    width: 100%;
+    max-height: 500px;
+    overflow: auto;
+}
+.filter{
+    width: 99%;
+    height: 15%;
+}
+th,td{
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+tr:nth-child(even){
+    background-color: hsl(0, 24%, 90%);
+}
+tr:nth-child(odd){
+    background-color:white;
+}
+
+@import '~@angular/material/prebuilt-themes/indigo-pink.css'

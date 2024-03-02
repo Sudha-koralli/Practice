@@ -1,0 +1,12 @@
+.grid {
+    display: grid;
+     grid-template-columns: repeat(3, 159px);
+   background-color: rgb(67, 34, 215);
+    padding: 10px 15px;
+    border-radius: 1px;
+     }
+    a[ng-reflect-router-link] {
+    color: white;
+    font-weight: 100;
+    font-size: medium;
+    }
